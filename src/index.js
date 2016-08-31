@@ -9,6 +9,7 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
+//Let react router handle page routes and refer to routes.js
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
       <Router history={browserHistory} routes={Routes} />

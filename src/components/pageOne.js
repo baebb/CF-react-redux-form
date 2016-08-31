@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
-//options objects
+//option objects
 const optionsList = [
     {name:'Option 1', id:'optionOne'},
     {name:'Option 2', id:'optionTwo'},
@@ -58,6 +58,7 @@ class MarketingFormPageOne extends React.Component {
     }
 };
 
+//put data in 'marketingForm' and don't destroy it if this component is no longer active
 export default reduxForm({
     form: 'marketingForm',
     destroyOnUnmount: false,

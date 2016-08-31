@@ -6,7 +6,9 @@ const renderField = field => (
     <div>
         <label htmlFor={field.name}>{field.label}</label>
         <input className="form-control" {...field.input} type={field.type}/>
-        {field.meta.touched && field.meta.error && <span>{field.meta.error}</span>}
+        <div className="text-xs-center">
+            {field.meta.touched && field.meta.error && <span>{field.meta.error}</span>}
+        </div>
     </div>
 );
 
@@ -15,6 +17,8 @@ const validate = values => {
     const errors = {};
     if (!values.email) {
         errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Please enter a valid email address';
     }
     return errors
 };
@@ -37,6 +41,7 @@ const MarketingFormPageTwo = (props) => {
     )
 };
 
+//push data to existing form 'marketingForm' and validate it
 export default reduxForm({
     form: 'marketingForm',
     destroyOnUnmount: false,
