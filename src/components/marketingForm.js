@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { submitForm } from '../actions/index';
 
@@ -7,13 +8,17 @@ import MarketingFormPageOne from './pageOne';
 import MarketingFormPageTwo from './pageTwo';
 
 class MarketingForm extends React.Component {
+    static contextTypes = {
+        router: React.PropTypes.object
+    };
+
     constructor(props) {
         super(props);
 
         //bind methods to parent
         this.nextPage = this.nextPage.bind(this);
         this.prevPage = this.prevPage.bind(this);
-        this.submitForm = this.submitForm.bind(this);
+        this.formComplete = this.formComplete.bind(this);
 
         this.state = {
             page: 1
@@ -28,11 +33,15 @@ class MarketingForm extends React.Component {
         this.setState({ page: this.state.page - 1 });
     }
 
-    submitForm(form) {
-        this.props.submitForm(form);
+    formComplete(form) {
+        this.props.submitForm(form)
+            //go to thank you page on response from dummy URL
+            .then(() => {
+                this.context.router.push('thankyou');
+            });
     }
 
-    //button to debug current form values
+    // to debug current form values
     // what(e) {
     //     e.preventDefault();
     //
@@ -44,13 +53,13 @@ class MarketingForm extends React.Component {
         return (
             <div className="content-wrapper row">
                 {this.state.page === 1 && <MarketingFormPageOne onSubmit={this.nextPage} />}
-                {this.state.page === 2 && <MarketingFormPageTwo onSubmit={this.submitForm} />}
+                {this.state.page === 2 && <MarketingFormPageTwo onSubmit={this.formComplete} />}
             </div>
         )
     }
 }
 
-//getting current form values for debugging
+// getting current form values for form debugging
 // const mapStateToProps = (state) => {
 //    return {form: state.form};
 // }

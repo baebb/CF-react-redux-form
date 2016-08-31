@@ -3,6 +3,7 @@
 }
 
 .box {
+    margin: 15px;
     padding: 40px 30px;
     border-radius: 0.25rem;
     background-color: lightgrey;
@@ -47,4 +48,10 @@
     background-color: lightsalmon;
     border-color: darkorange;
     color: white;
+}
+
+@media only screen and (max-device-width: 740px) {
+    .content-wrapper {
+        margin-top: 0px;
+    }
 }
