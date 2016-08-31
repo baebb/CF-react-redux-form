@@ -1,0 +1,50 @@
+.content-wrapper {
+    margin-top: 200px;
+}
+
+.box {
+    padding: 40px 30px;
+    border-radius: 0.25rem;
+    background-color: lightgrey;
+}
+
+.btn-fw {
+    margin-top: 40px;
+    width: 140px;
+}
+
+.customRadio div {
+    text-align: center;
+}
+
+.customRadio input[type=radio] {
+    display:none;
+}
+
+.customRadio label span p {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.customRadio label span img {
+    border: 1px solid gray;
+    width: 60px;
+    height: 60px;
+}
+
+.customRadio label span {
+    padding: 15px 0;
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 0.25em;
+    background-color: whitesmoke;
+    height: 125px;
+    width: 125px;
+    display:inline-block;
+}
+
+.customRadio label input[type=radio]:checked + span {
+    background-color: lightsalmon;
+    border-color: darkorange;
+    color: white;
+}

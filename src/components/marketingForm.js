@@ -34,11 +34,9 @@ class MarketingForm extends React.Component {
     render() {
         // const { onSubmit } = this.props;
         return (
-            <div>
-                <div>
+            <div className="content-wrapper row">
                 {this.state.page === 1 && <MarketingFormPageOne onSubmit={this.nextPage} />}
                 {this.state.page === 2 && <MarketingFormPageTwo onSubmit={this.nextPage} />}
-                </div>
                 <button className="btn btn-warning" onClick={this.what.bind(this)}>What</button>
             </div>
         )
