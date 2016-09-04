@@ -15,6 +15,6 @@ export function submitForm(props) {
     return {
         type: CREATE_POST,
         payload: request
-    }
+    };
     //using redux-promise we can apply middleware to transform promises into response data
 }

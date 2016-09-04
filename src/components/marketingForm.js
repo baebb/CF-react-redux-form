@@ -8,9 +8,9 @@ import MarketingFormPageOne from './pageOne';
 import MarketingFormPageTwo from './pageTwo';
 
 class MarketingForm extends React.Component {
-    static contextTypes = {
-        router: React.PropTypes.object
-    };
+    // static contextTypes = {
+    //     router: React.PropTypes.object
+    // };
 
     constructor(props) {
         super(props);

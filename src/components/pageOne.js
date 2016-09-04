@@ -24,7 +24,7 @@ class MarketingFormPageOne extends React.Component {
     //custom radio button elements
     radioBtns(option,index) {
         return (
-            <div className="col-md-4" key={index}>
+            <div className={`option ${option.id} col-md-4`} key={option.id}>
                 <label>
                     <Field name="selectionOption" component="input" type="radio" value={option.id}/>
                     <span>
@@ -39,7 +39,7 @@ class MarketingFormPageOne extends React.Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div className="col-md-8 offset-md-2">
+            <div className="page-one col-md-8 offset-md-2">
                 <div className="box">
                     <form onSubmit={handleSubmit}>
                         <div className="form-group customRadio row">

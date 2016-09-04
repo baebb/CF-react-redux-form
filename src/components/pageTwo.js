@@ -26,7 +26,7 @@ const validate = values => {
 const MarketingFormPageTwo = (props) => {
     const {handleSubmit} = props;
     return (
-        <div className="col-md-4 offset-md-4">
+        <div className="page-two col-md-4 offset-md-4">
             <div className="box">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
