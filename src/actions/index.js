@@ -9,8 +9,8 @@ export function submitForm(props) {
     //axios serializes our form object and makes a post request to a dummy URL (as a promise)
     const request = axios.post(`${ROOT_URL}/posts`, props);
 
-    console.log("post form action received!")
-    console.log(request);
+    // console.log("post form action received!");
+    // console.log(request);
 
     return {
         type: CREATE_POST,

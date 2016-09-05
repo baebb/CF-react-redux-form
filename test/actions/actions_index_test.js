@@ -1,22 +1,25 @@
-import { expect } from '../test_helper';
+import {expect} from '../test_helper';
 //types
-import { CREATE_POST } from '../../src/actions/index';
+import {CREATE_POST} from '../../src/actions/index';
 //actions
-import { submitForm } from '../../src/actions/index';
+import {submitForm} from '../../src/actions/index';
 
-describe('actions', () => {
+describe('Actions', () => {
     it('has the correct type', () => {
         const action = submitForm();
-        expect(action.type).to.equal( CREATE_POST );
+        expect(action.type).to.equal(CREATE_POST);
     });
 
-    it('has the correct payload', () => {
+    it('creates a promise payload', () => {
         const action = submitForm({ iAmAFormObject: null });
-        expect(action.payload).to.equal(Promise.pending());
-        console.log(action.payload);
-        action.payload.then((responseData) => {
-            // console.log(responseData);
-        })
+        expect(action.payload).to.be.a('promise');
     });
 
+    it('promise returns a response', (done) => {
+        const action = submitForm({ iAmAFormObject: null });
+        action.payload.then((responseData) => {
+            expect(responseData).to.have.property('status');
+            done();
+        });
+    });
 });
