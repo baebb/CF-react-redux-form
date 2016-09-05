@@ -42,11 +42,11 @@ class MarketingForm extends React.Component {
     }
 
     // to debug current form values
-    // what(e) {
-    //     e.preventDefault();
-    //
-    //     console.log(this.props.form);
-    // }
+    what(e) {
+        e.preventDefault();
+
+        console.log(this.props.form);
+    }
 
     //render sequence of form pages according to this.state.page
     render() {
@@ -54,15 +54,16 @@ class MarketingForm extends React.Component {
             <div className="content-wrapper row">
                 {this.state.page === 1 && <MarketingFormPageOne onSubmit={this.nextPage} />}
                 {this.state.page === 2 && <MarketingFormPageTwo onSubmit={this.formComplete} />}
+                <button onClick={this.what.bind(this)} className="btn btn-success">what</button>
             </div>
         )
     }
 }
 
 // getting current form values for form debugging
-// const mapStateToProps = (state) => {
-//    return {form: state.form};
-// }
+const mapStateToProps = (state) => {
+   return {form: state.form};
+}
 
 //connect submitForm action to component
-export default connect(null, { submitForm })(MarketingForm);
+export default connect(mapStateToProps, { submitForm })(MarketingForm);

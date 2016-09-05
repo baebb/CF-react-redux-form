@@ -10,7 +10,7 @@ export function submitForm(props) {
     const request = axios.post(`${ROOT_URL}/posts`, props);
 
     console.log("post form action received!")
-    console.log(props);
+    console.log(request);
 
     return {
         type: CREATE_POST,
