@@ -10,7 +10,7 @@ describe('Actions', () => {
         expect(action.type).to.equal(CREATE_POST);
     });
 
-    it('creates a promise payload', () => {
+    it('creates a promise request to server', () => {
         const action = submitForm({ iAmAFormObject: null });
         expect(action.payload).to.be.a('promise');
     });

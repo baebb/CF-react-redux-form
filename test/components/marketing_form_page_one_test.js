@@ -2,7 +2,8 @@ import { renderComponent, expect } from '../test_helper';
 import MarketingFormPageOne from '../../src/components/pageOne';
 
 describe('MarketingFormPageOne', () => {
-   let component;
+    console.log(validate);
+    let component;
 
     beforeEach(() => {
         component = renderComponent(MarketingFormPageOne, null, { form: { marketingForm: { values: null } } });
@@ -16,14 +17,28 @@ describe('MarketingFormPageOne', () => {
        expect(component.find('.btn')).to.exist;
     });
 
-    // describe('selecting options', () => {
-    //    beforeEach (() => {
-    //       component.find('.optionTwo input[type=radio]').simulate('checked');
-    //    });
-    //
-    //     it('checks the radio input', () => {
-    //        expect(component.find('.optionTwo input[type=radio]')).to.be.checked;
-    //     });
-    // });
+    describe('Selecting options', () => {
+       beforeEach (() => {
+          component.find('.optionTwo input[type=radio]').simulate('change');
+       });
+
+        it('checks the radio input', () => {
+           expect(component.find('.optionTwo input[type=radio]')).to.be.checked;
+        });
+
+        it('changes when new option is selected', () => {
+            component.find('.optionThree input[type=radio]').simulate('change');
+            expect(component.find('.optionThree input[type=radio]')).to.be.checked;
+            expect(component.find('.optionTwo input[type=radio]')).to.not.be.checked;
+        });
+    });
+
+    describe('Validation', () => {
+       it('prevents form submission with no option selected', () => {
+           // component.find('form').simulate('submit');
+           // console.log(component.find('form'));
+           expect(component.find('.error')).to.exist;
+       });
+    });
 
 });

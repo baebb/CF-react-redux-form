@@ -18,7 +18,7 @@ const validate = values => {
 };
 
 //render error msg on touched + error
-const renderError = ({ meta: { touched, error }}) => touched && error ? <span>{error}</span> : null;
+const renderError = ({ meta: { touched, error }}) => touched && error ? <span className="error">{error}</span> : null;
 
 class MarketingFormPageOne extends React.Component {
     //custom radio button elements
@@ -45,7 +45,7 @@ class MarketingFormPageOne extends React.Component {
                         <div className="form-group customRadio row">
                             {optionsList.map((option,index) => this.radioBtns(option,index))}
                         </div>
-                        <div className="text-xs-center">
+                        <div className="text-xs-center error-block">
                             <Field name="selectionOption" component={renderError} />
                         </div>
                         <div className="text-xs-center">
