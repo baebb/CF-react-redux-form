@@ -6,8 +6,8 @@ const renderField = field => (
     <div>
         <label htmlFor={field.name}>{field.label}</label>
         <input className="form-control" {...field.input} type={field.type}/>
-        <div className="text-xs-center">
-            {field.meta.touched && field.meta.error && <span>{field.meta.error}</span>}
+        <div className="text-xs-center error-block">
+            {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
         </div>
     </div>
 );

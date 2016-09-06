@@ -8,10 +8,6 @@ import MarketingFormPageOne from './pageOne';
 import MarketingFormPageTwo from './pageTwo';
 
 class MarketingForm extends React.Component {
-    // static contextTypes = {
-    //     router: React.PropTypes.object
-    // };
-
     constructor(props) {
         super(props);
 
@@ -37,16 +33,17 @@ class MarketingForm extends React.Component {
         this.props.submitForm(form)
             //go to thank you page on response from dummy URL
             .then(() => {
+                console.log('got here too!')
                 this.context.router.push('thankyou');
             });
     }
 
     // to debug current form values
-    what(e) {
-        e.preventDefault();
-
-        console.log(this.props.form);
-    }
+    // what(e) {
+    //     e.preventDefault();
+    //
+    //     console.log(this.props.form);
+    // }
 
     //render sequence of form pages according to this.state.page
     render() {
@@ -54,16 +51,19 @@ class MarketingForm extends React.Component {
             <div className="content-wrapper row">
                 {this.state.page === 1 && <MarketingFormPageOne onSubmit={this.nextPage} />}
                 {this.state.page === 2 && <MarketingFormPageTwo onSubmit={this.formComplete} />}
-                <button onClick={this.what.bind(this)} className="btn btn-success">what</button>
             </div>
         )
     }
 }
 
+MarketingForm.contextTypes = {
+    router: React.PropTypes.object
+};
+
 // getting current form values for form debugging
-const mapStateToProps = (state) => {
-   return {form: state.form};
-}
+// const mapStateToProps = (state) => {
+//    return {form: state.form};
+// }
 
 //connect submitForm action to component
-export default connect(mapStateToProps, { submitForm })(MarketingForm);
+export default connect(null, { submitForm })(MarketingForm);

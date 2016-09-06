@@ -8,6 +8,9 @@ const optionsList = [
     {name:'Option 3', id:'optionThree'}
     ];
 
+//render error msg on touched + error
+const renderError = ({ meta: { touched, error }}) => touched && error ? <span className="error">{error}</span> : null;
+
 //validator
 const validate = values => {
     const errors = {};
@@ -16,9 +19,6 @@ const validate = values => {
     }
     return errors
 };
-
-//render error msg on touched + error
-const renderError = ({ meta: { touched, error }}) => touched && error ? <span className="error">{error}</span> : null;
 
 class MarketingFormPageOne extends React.Component {
     //custom radio button elements
