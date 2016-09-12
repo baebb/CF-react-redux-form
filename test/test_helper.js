@@ -7,7 +7,6 @@ import chai, {expect} from 'chai';
 import chaiJquery from 'chai-jquery';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import { reducer as formReducer } from 'redux-form';
 
 import reducers from '../src/reducers';
 
@@ -28,18 +27,6 @@ function renderComponent(ComponentClass, props = {}, state = {}) {
     return $(ReactDOM.findDOMNode(componentInstance));
 }
 
-
-
-function mockFormStore(initialState = {}) {
-    const store = createStore((state = initialState, action) => {
-        return Object.assign({}, state, {
-            form: formReducer(state.form, action),
-        });
-    });
-
-    return store;
-}
-
 $.fn.simulate = function (eventName, value) {
     if (value) {
         this.val(value);
@@ -47,4 +34,4 @@ $.fn.simulate = function (eventName, value) {
     TestUtils.Simulate[eventName](this[0]);
 };
 
-export { renderComponent, expect, mockFormStore };
+export { renderComponent, expect };
